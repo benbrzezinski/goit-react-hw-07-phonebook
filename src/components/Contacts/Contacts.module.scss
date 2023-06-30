@@ -9,8 +9,7 @@
 
   @include min-width(401px) {
     display: flex;
-    column-gap: 35px;
     flex-wrap: wrap;
-    row-gap: 30px;
+    gap: 35px;
   }
 }

@@ -1,21 +1,16 @@
 import { useSelector, useDispatch } from "react-redux";
-import { selectContacts, selectFilter } from "../../redux/selectors";
-import { deleteContact } from "../../redux/contactsSlice";
+import { selectFilteredContacts } from "../../redux/selectors";
+import { deleteContact } from "../../redux/actions";
 import scss from "./ContactsItem.module.scss";
 
 const ContactsItem = () => {
-  const contacts = useSelector(selectContacts);
-  const filter = useSelector(selectFilter);
+  const filteredContacts = useSelector(selectFilteredContacts);
   const dispatch = useDispatch();
 
   const handleDeleteContact = e => {
     const id = e.currentTarget.dataset.id;
     dispatch(deleteContact(id));
   };
-
-  const filteredContacts = contacts.filter(({ name }) =>
-    name.toLowerCase().trim().startsWith(filter.toLowerCase().trim())
-  );
 
   return filteredContacts.map(({ id, name, number }) => (
     <li className={scss.item} key={id}>
@@ -25,7 +20,7 @@ const ContactsItem = () => {
         {name}
       </p>
       <p className={scss.text}>
-        <span className={scss.tel}>Tel: </span>
+        <span className={scss.phone}>Phone: </span>
         {number}
       </p>
       <button

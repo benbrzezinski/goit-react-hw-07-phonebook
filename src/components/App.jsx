@@ -1,17 +1,18 @@
 import { useEffect } from "react";
-import { useSelector } from "react-redux";
-import { selectContacts } from "../redux/selectors";
+import { useDispatch } from "react-redux";
+import { getContacts } from "../redux/actions";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.min.css";
 import Section from "./Section/Section";
 import Form from "./Form/Form";
 import Contacts from "./Contacts/Contacts";
-import Storage from "../utils/storage/localStorage";
 
 const App = () => {
-  const contacts = useSelector(selectContacts);
+  const dispatch = useDispatch();
 
-  useEffect(() => Storage.setContacts(contacts), [contacts]);
+  useEffect(() => {
+    dispatch(getContacts());
+  }, [dispatch]);
 
   return (
     <>

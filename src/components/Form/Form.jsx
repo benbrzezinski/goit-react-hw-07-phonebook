@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { selectContacts } from "../../redux/selectors";
-import { addContact } from "../../redux/contactsSlice";
+import { addContact } from "../../redux/actions";
 import { toast } from "react-toastify";
 import { nanoid } from "nanoid";
 import scss from "./Form.module.scss";
@@ -27,10 +27,10 @@ const Form = () => {
     const contactsNames = contacts.map(({ name }) => name);
 
     if (contactsNames.includes(values.name)) {
-      return toast.error(`${values.name} is already in contacts!`);
+      return toast.error(`${values.name} is already in contacts ☎`);
     }
 
-    dispatch(addContact(values.name, values.number));
+    dispatch(addContact(values));
     setValues({ name: "", number: "" });
   };
 
