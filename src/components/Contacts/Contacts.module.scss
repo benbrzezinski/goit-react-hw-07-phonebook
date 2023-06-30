@@ -1,0 +1,16 @@
+@use "src/utils/scss/mixins.scss" as *;
+
+.title {
+  margin-bottom: 20px;
+}
+
+.contacts {
+  padding-left: 35px;
+
+  @include min-width(401px) {
+    display: flex;
+    column-gap: 35px;
+    flex-wrap: wrap;
+    row-gap: 30px;
+  }
+}
