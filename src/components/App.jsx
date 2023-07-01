@@ -19,13 +19,16 @@ const App = () => {
     dispatch(getContacts());
   }, [dispatch]);
 
+  useEffect(() => {
+    if (error) toast.error(error);
+  }, [error]);
+
   return (
     <>
       <Section>
         <Form />
         <Contacts />
       </Section>
-      {error && toast.error(error)}
       {isLoading && <Loader isLoading={isLoading} />}
       <ToastContainer position="top-left" autoClose={3000} theme="colored" />
     </>

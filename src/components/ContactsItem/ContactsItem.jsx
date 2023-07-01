@@ -12,16 +12,15 @@ const ContactsItem = () => {
     dispatch(deleteContact(id));
   };
 
-  return filteredContacts.map(({ id, name, number }) => (
+  return filteredContacts.map(({ id, name, phone }) => (
     <li className={scss.item} key={id}>
-      <span className={scss.icon}></span>
       <p className={scss.text}>
         <span className={scss.name}>Name: </span>
         {name}
       </p>
       <p className={scss.text}>
         <span className={scss.phone}>Phone: </span>
-        {number}
+        {phone}
       </p>
       <button
         className={scss.btn}

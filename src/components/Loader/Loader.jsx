@@ -9,7 +9,7 @@ const Loader = ({ isLoading }) => (
     width="100"
     ariaLabel="blocks-loading"
     wrapperClass={scss.loader}
-    colors={["#e15b64", "#f47e60", "#f8b26a", "#abbd81", "#849b87"]}
+    colors={["#fff8de", "#c1d0b5", "#617a55", "#e2ecde", "#849b87"]}
   />
 );
 

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { selectContacts } from "../../redux/selectors";
 import { addContact } from "../../redux/actions";
@@ -6,15 +6,15 @@ import { toast } from "react-toastify";
 import { nanoid } from "nanoid";
 import scss from "./Form.module.scss";
 
-const ID = {
-  nameInput: nanoid(),
-  numberInput: nanoid(),
-};
-
 const Form = () => {
   const [values, setValues] = useState({ name: "", number: "" });
   const contacts = useSelector(selectContacts);
   const dispatch = useDispatch();
+
+  const id = useRef({
+    nameInput: nanoid(),
+    numberInput: nanoid(),
+  });
 
   const handleChange = e => {
     const { name, value } = e.currentTarget;
@@ -36,12 +36,12 @@ const Form = () => {
 
   return (
     <form className={scss.form} onSubmit={handleSubmit}>
-      <label className={scss.label} htmlFor={ID.nameInput}>
+      <label className={scss.label} htmlFor={id.current.nameInput}>
         Name
       </label>
       <input
         className={scss.input}
-        id={ID.nameInput}
+        id={id.current.nameInput}
         type="text"
         name="name"
         value={values.name}
@@ -50,12 +50,12 @@ const Form = () => {
         title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
         required
       />
-      <label className={scss.label} htmlFor={ID.numberInput}>
-        Number
+      <label className={scss.label} htmlFor={id.current.numberInput}>
+        Phone
       </label>
       <input
         className={scss.input}
-        id={ID.numberInput}
+        id={id.current.numberInput}
         type="tel"
         name="number"
         value={values.number}

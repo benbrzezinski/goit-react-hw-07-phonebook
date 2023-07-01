@@ -14,7 +14,7 @@ const contactsSlice = createSlice({
   name: "contacts",
   initialState: {
     items: [],
-    isLoading: false,
+    isLoading: true,
     error: null,
   },
   extraReducers: builder => {
@@ -28,7 +28,7 @@ const contactsSlice = createSlice({
       .addCase(getContacts.rejected, handleRejected)
       .addCase(addContact.pending, handlePending)
       .addCase(addContact.fulfilled, (state, { payload }) => {
-        state.items.push(payload);
+        state.items.unshift(payload);
         state.isLoading = false;
         state.error = null;
       })

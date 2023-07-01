@@ -5,11 +5,10 @@
 }
 
 .contacts {
-  padding-left: 35px;
-
   @include min-width(401px) {
     display: flex;
     flex-wrap: wrap;
-    gap: 35px;
+    gap: 30px;
+    padding-left: 20px;
   }
 }
