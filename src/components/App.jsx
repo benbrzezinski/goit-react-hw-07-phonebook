@@ -1,7 +1,6 @@
 import { useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import { selectIsLoading, selectError } from "../redux/selectors";
-import { getContacts } from "../redux/actions";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.min.css";
 import { toast } from "react-toastify";
@@ -13,11 +12,6 @@ import Loader from "./Loader/Loader";
 const App = () => {
   const isLoading = useSelector(selectIsLoading);
   const error = useSelector(selectError);
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(getContacts());
-  }, [dispatch]);
 
   useEffect(() => {
     if (error) toast.error(error);
