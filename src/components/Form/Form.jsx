@@ -51,7 +51,7 @@ const Form = () => {
         required
       />
       <label className={scss.label} htmlFor={id.current.numberInput}>
-        Phone
+        Number
       </label>
       <input
         className={scss.input}
